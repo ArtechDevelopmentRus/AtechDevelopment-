@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Artech Development: боты и сайты под ключ</title>
+<style>
+:root{--bg:#eef1f4;--surface:#fff;--text:#101820;--muted:#566370;--line:#d8dee4;--accent:#2b50ff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f141a;--surface:#171e26;--text:#eef2f6;--muted:#9aa7b4;--line:#27313c;--accent:#6f8bff;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f141a;--surface:#171e26;--text:#eef2f6;--muted:#9aa7b4;--line:#27313c;--accent:#6f8bff;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 20px 56px}
+h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.08;margin:0 0 14px;letter-spacing:-.02em;font-weight:800;max-width:15em}
+.lead{color:var(--muted);max-width:34em;margin:0 0 20px;font-size:1.05rem}
+.chips{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:0 0 36px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 16px;color:var(--muted);font-size:.93rem}
+.chips b{display:block;color:var(--text);font-size:1rem;margin-bottom:3px}
+.grid{display:grid;gap:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr}
+@media (min-width:760px){.card{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}.card:nth-child(even) .vis{order:2}}
+.vis{background:color-mix(in srgb,var(--c) 14%,var(--surface));padding:26px 18px;display:flex;align-items:center;justify-content:center}
+.body{padding:24px 24px 28px;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.meta{display:flex;justify-content:space-between;gap:10px;font-size:.85rem;color:var(--muted)}
+.meta b{color:var(--text);font-weight:700}
+h2{font-size:1.35rem;line-height:1.25;margin:0}
+.body p{margin:0;color:var(--muted)}
+ul.f{margin:4px 0 0;padding-left:1.1em}
+ul.f li{margin:3px 0}
+.note{margin:36px 0 0;padding:20px 22px;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}
+.note b{color:var(--text)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.01em;margin:0 0 30px}
+.brand::before{content:"A";display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:#2b50ff;color:#fff;font-size:1.05rem}
+.brand span{font-weight:500;color:var(--muted);font-size:.9rem;border-left:1px solid var(--line);padding-left:10px}
+.copy{margin:26px 0 0;color:var(--muted);font-size:.9rem}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 24px}
+.cta a{display:inline-block;border-radius:10px;padding:12px 20px;font-weight:700;text-decoration:none}
+.b1{background:#2b50ff;color:#fff}
+.b2{border:1px solid var(--line);background:var(--surface);color:var(--text)}
+.note .cta{margin:14px 0 0}
+.st{font-size:1.3rem;margin:34px 0 14px}
+.steps{list-style:none;counter-reset:s;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));padding:0;margin:0 0 8px}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--muted);font-size:.93rem}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#2b50ff;color:#fff;font-weight:700;font-size:.85rem;margin-bottom:8px}
+.steps b{display:block;color:var(--text);margin-bottom:2px;font-size:1rem}
+/* Telegram и VK */
+.tg{width:min(100%,310px);border-radius:20px;overflow:hidden;background:#d4e0ea;border:1px solid rgba(0,0,0,.1);font-size:13px;line-height:1.35;color:#0f1a24;box-shadow:0 10px 28px rgba(16,24,32,.18)}
+.tg-h{background:#fff;padding:9px 12px;display:flex;align-items:center;gap:9px;border-bottom:1px solid #e4e9ee}
+.av{width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:700;flex:none}
+.tg-h b{display:block;font-size:13.5px}.tg-h small{color:#8a97a3;font-size:11px}
+.tg-b{padding:12px 10px;display:flex;flex-direction:column;gap:5px}
+.in,.out{max-width:88%;padding:6px 36px 6px 10px;border-radius:12px;position:relative;white-space:pre-line}
+.in{background:#fff;border-bottom-left-radius:4px;align-self:flex-start}
+.out{background:#e1ffc7;border-bottom-right-radius:4px;align-self:flex-end}
+.t{position:absolute;right:7px;bottom:3px;font-size:10px;color:#8a97a3}
+.kb{display:flex;flex-direction:column;gap:3px;width:88%;align-self:flex-start}
+.kb div{display:flex;gap:3px}
+.kb span{flex:1;background:rgba(38,58,78,.6);color:#fff;text-align:center;border-radius:8px;padding:6px 4px;font-size:12px}
+.tg-i{background:#fff;padding:10px 12px;color:#9aa6b2;border-top:1px solid #e4e9ee;display:flex;justify-content:space-between}
+.vk{background:#fff}.vk .tg-b{background:#fff}.vk .in{background:#f0f2f5}.vk .out{background:#5181b8;color:#fff}.vk .out .t{color:#dbe6f3}
+.vk .tg-h b::after{content:" ✓";color:#5181b8}
+.vk-k{background:#ebedf0;padding:8px;display:flex;flex-direction:column;gap:6px}
+.vk-k div{display:flex;gap:6px}.vk-k span{flex:1;background:#fff;border-radius:8px;text-align:center;padding:7px 4px;font-size:12px;color:#222;box-shadow:0 1px 0 rgba(0,0,0,.12)}
+/* сайты */
+.web{width:min(100%,430px);background:#fff;color:#14202b;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.1);box-shadow:0 10px 28px rgba(16,24,32,.18);font-size:12px;line-height:1.4}
+.bar{background:#eceff2;padding:8px 10px;display:flex;align-items:center;gap:6px}
+.bar i{width:8px;height:8px;border-radius:50%;background:#c3cad1}
+.bar em{flex:1;font-style:normal;background:#fff;border-radius:6px;padding:2px 10px;color:#6a7682;margin-left:6px;font-size:11px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #eceff2}
+.nav b{font-size:13px}.nav span{color:#5b6773;margin-left:12px}
+.hero2{display:grid;grid-template-columns:1.2fr 1fr;gap:10px;padding:18px 14px;background:color-mix(in srgb,var(--c) 10%,#fff)}
+.hero2 h3{margin:0 0 6px;font-size:17px;line-height:1.15}.hero2 p{margin:0 0 10px;color:#4a5662}
+.btn{display:inline-block;background:var(--c);color:#fff;border-radius:7px;padding:6px 12px;font-weight:700}
+.pic{border-radius:10px;min-height:96px;background:radial-gradient(circle at 70% 25%,rgba(255,255,255,.55) 0 14%,transparent 15%),linear-gradient(150deg,var(--c),color-mix(in srgb,var(--c) 40%,#000))}
+.sec{padding:12px 14px}.sec h4{margin:0 0 8px;font-size:13px}
+.row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eceff2}.row b{color:var(--c)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.cards div{border:1px solid #e1e6ea;border-top:3px solid var(--c);border-radius:8px;padding:8px 6px}.cards b{display:block;margin-top:4px;color:var(--c)}
+.fld{border:1px solid #d5dce2;border-radius:6px;padding:6px 8px;color:#9aa6b2;margin-bottom:6px}
+.foot{background:#14202b;color:#c4cdd5;padding:9px 14px;font-size:11px}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="brand">Artech Development<span>IT-студия</span></div>
+<h1>Боты и сайты под ключ</h1>
+<p class="lead">Создаём Telegram- и VK-ботов, сайты и приложения, которые экономят ваше время и помогают получать заявки. От идеи до запуска. Подключим искусственный интеллект там, где он даст вашему бизнесу реальную пользу.</p>
+<div class="cta"><a class="b1" href="https://t.me/Artttech_Bot" target="_blank" rel="noopener">Написать в Telegram</a><a class="b2" href="https://vk.ru/atechdevelopment" target="_blank" rel="noopener">Мы в VK</a></div>
+<h2 class="st">Как мы работаем</h2>
+<ol class="steps"><li><b>Расскажите задачу</b>Опишите своими словами, что хотите получить.</li><li><b>Бесплатный план проекта</b>Опишем в ТЗ, что и как будет сделано. Решение о заказе вы принимаете после этого.</li><li><b>Цена под вашу задачу</b>Стоимость зависит от сложности проекта. Называем её и сроки после согласования ТЗ.</li><li><b>Запуск под ключ</b>Разработаем, настроим и запустим. Вам не нужно разбираться в технике. При необходимости подключим ИИ.</li></ol>
+<h2 class="st">Примеры: как это может выглядеть</h2>
+<div class="grid" id="g"></div>
+<div class="note"><b>Есть задача?</b> Напишите: бесплатно составим ТЗ и назовём цену.<br>Telegram: @Artttech_Bot<div class="cta"><a class="b1" href="https://t.me/Artttech_Bot" target="_blank" rel="noopener">Написать в Telegram</a><a class="b2" href="https://vk.ru/atechdevelopment" target="_blank" rel="noopener">Мы в VK</a></div></div>
+<p class="copy">Artech Development, IT-студия</p>
+</main>
+<script>
+var P=[
+{t:'tg',c:'#2b6bff',tag:'Telegram-бот',title:'Онлайн-запись для салона красоты',name:'Салон «Лилия»',av:'Л',
+d:'Клиент выбирает услугу, мастера и время без переписки с администратором.',
+f:['Свободные окна обновляются сразу','Напоминание за сутки и за 2 часа','Уведомление мастеру о новой записи','Отмена и перенос в одно нажатие'],
+m:[['in','Здравствуйте, Анна! 👋\nНа какую услугу записать?','10:02'],['kb',[['💅 Маникюр','✂️ Стрижка'],['🎨 Окрашивание']]],['out','💅 Маникюр','10:02'],['in','Ближайшие окна завтра:','10:02'],['kb',[['11:00','14:30','17:00'],['Другой день']]],['out','14:30','10:03'],['in','✅ Вы записаны\nМаникюр, завтра в 14:30\nМастер: Ольга\nНапомним за сутки.','10:03'],['kb',[['Перенести','Отменить']]]]},
+{t:'tg',c:'#0e8f6e',tag:'Telegram-бот',title:'Продажа курса: оплата и доступ',name:'Школа Excel',av:'Э',
+d:'Бот принимает оплату, выдаёт ссылку на закрытый канал и ведёт ученика по урокам.',
+f:['Оплата картой внутри Telegram','Автоматическая выдача и закрытие доступа','Рассылка о новых уроках'],
+m:[['in','Курс «Основы Excel»\n12 уроков и чат с куратором.\nВыберите тариф:','12:40'],['kb',[['Базовый, 4 900 ₽'],['С куратором, 8 900 ₽']]],['out','Базовый, 4 900 ₽','12:41'],['in','Счёт на 4 900 ₽ готов.','12:41'],['kb',[['💳 Оплатить']]],['in','✅ Оплата получена!\nДоступ в закрытый канал: t.me/+kurs\nПервый урок откроется сегодня.','12:43']]},
+{t:'vk',c:'#5181b8',tag:'VK-бот',title:'Меню и заказ для кофейни',name:'Кофейня «Зерно»',av:'З',
+d:'Сообщество превращается в точку заказа: гость выбирает напиток и приходит к готовому.',
+f:['Меню с кнопками прямо в сообщениях','Заказ к определённому времени','Заявка сразу уходит бариста'],
+m:[['in','Привет! Что закажете сегодня?','8:12'],['out','Капучино','8:12'],['in','Капучино 250 мл, 220 ₽.\nК какому времени подготовить?','8:12'],['out','9:30','8:13'],['in','Заказ принят ✅\nКапучино к 9:30, ул. Садовая, 12.\nЖдём вас!','8:13']],k:[['8:30','9:00','9:30'],['Меню','Мои заказы']]},
+{t:'web',c:'#e8590c',tag:'Сайт',title:'Сайт-визитка барбершопа',url:'boroda-barber.ru',logo:'Борода',nav:['Услуги','Мастера','Контакты'],
+d:'Одностраничный сайт с прайсом, мастерами и записью, который удобно открывать с телефона.',
+f:['Прайс и портфолио мастеров','Кнопка записи и карта проезда','Быстрая загрузка на мобильном'],
+h:'Мужские стрижки и уход за бородой',s:'Центр города, запись онлайн без звонков',b:'Записаться',
+rows:[['Стрижка','1 500 ₽'],['Стрижка и борода','2 300 ₽'],['Королевское бритьё','1 800 ₽']],foot:'ул. Садовая, 12, ежедневно 10:00–21:00'},
+{t:'web',c:'#7048e8',tag:'Сайт',title:'Лендинг для эксперта с оплатой',url:'orlova-finance.ru',logo:'Мария Орлова',nav:['Услуги','Отзывы','Оплата'],
+d:'Страница эксперта: услуги, отзывы, форма заявки и приём оплаты консультации.',
+f:['Блок с услугами и ценами','Форма заявки с уведомлением в Telegram','Подключение онлайн-оплаты'],
+h:'Наведу порядок в личных финансах',s:'Консультация 60 минут, онлайн',b:'Оставить заявку',
+cards:[['Разбор бюджета','3 500 ₽'],['План накоплений','5 000 ₽'],['Сопровождение','от 12 000 ₽']],form:['Ваше имя','Telegram или телефон'],foot:'Принимаем карты и СБП'}
+];
+function chat(p){var h='<div class="tg'+(p.t=='vk'?' vk':'')+'"><div class="tg-h"><span class="av">'+p.av+'</span><div><b>'+p.name+'</b><small>'+(p.t=='vk'?'сообщество':'бот')+'</small></div></div><div class="tg-b">';
+p.m.forEach(function(m){if(m[0]=='kb'){h+='<div class="kb">'+m[1].map(function(r){return '<div>'+r.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div>'}).join('')+'</div>'}else{h+='<div class="'+m[0]+'">'+m[1]+'<span class="t">'+m[2]+'</span></div>'}});
+h+='</div>';
+if(p.k){h+='<div class="vk-k">'+p.k.map(function(r){return '<div>'+r.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div>'}).join('')+'</div>'}
+else{h+='<div class="tg-i"><span>Сообщение</span><span>🎤</span></div>'}
+return h+'</div>'}
+function web(p){var h='<div class="web"><div class="bar"><i></i><i></i><i></i><em>'+p.url+'</em></div><div class="nav"><b>'+p.logo+'</b><div>'+p.nav.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div></div><div class="hero2"><div><h3>'+p.h+'</h3><p>'+p.s+'</p><span class="btn">'+p.b+'</span></div><div class="pic"></div></div>';
+if(p.rows){h+='<div class="sec"><h4>Услуги и цены</h4>'+p.rows.map(function(r){return '<div class="row"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'}).join('')+'</div>'}
+if(p.cards){h+='<div class="sec"><h4>Чем могу помочь</h4><div class="cards">'+p.cards.map(function(r){return '<div>'+r[0]+'<b>'+r[1]+'</b></div>'}).join('')+'</div></div><div class="sec"><h4>Заявка на консультацию</h4>'+p.form.map(function(x){return '<div class="fld">'+x+'</div>'}).join('')+'<span class="btn">Отправить</span></div>'}
+return h+'<div class="foot">'+p.foot+'</div></div>'}
+document.getElementById('g').innerHTML=P.map(function(p){
+return '<article class="card" style="--c:'+p.c+'"><div class="vis">'+(p.t=='web'?web(p):chat(p))+'</div><div class="body"><div class="meta"><b>'+p.tag+'</b><span>Демо-проект</span></div><h2>'+p.title+'</h2><p>'+p.d+'</p><ul class="f">'+p.f.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div></article>'}).join('');
+</script>
+</body>
+</html>
